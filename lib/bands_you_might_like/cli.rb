@@ -1,6 +1,7 @@
 class BYML
   def call
     puts "Want to discover some bands you may like? Enter a band you like:"
+    original_band = gets.strip.downcase
   end
 
   def self.band_list

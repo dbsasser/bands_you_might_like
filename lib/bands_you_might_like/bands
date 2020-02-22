@@ -1,0 +1,9 @@
+class OriginalBand
+#have a name, change name to url param, store list of similar bands
+
+end
+
+class SimilarBands
+#have a name, years, genres, bio, top 3/5 songs, links to those songs.
+
+end
