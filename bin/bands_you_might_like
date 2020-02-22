@@ -3,3 +3,5 @@
 require './lib/bands_you_might_like.rb'
 
 BYML.new.call
+BYML.band_list
+BYML.band_details
