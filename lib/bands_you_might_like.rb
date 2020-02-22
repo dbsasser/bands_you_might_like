@@ -1,6 +1,2 @@
-require "bands_you_might_like/version"
-
-module BandsYouMightLike
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./bands_you_might_like/version"
+require_relative './bands_you_might_like/cli'
