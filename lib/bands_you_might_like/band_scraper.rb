@@ -5,7 +5,7 @@ require "open-uri"
 class BandScraper
 
   def self.get_page
-    @@doc = Nokogiri::HTML(open("https://www.last.fm/#{BYML.convert_input_to_param}"))
+    @@doc = Nokogiri::HTML(open("https://www.last.fm/music/#{BYML.convert_input_to_param}"))
   end
   
   def self.make_bands 
