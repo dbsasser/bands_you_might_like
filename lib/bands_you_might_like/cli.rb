@@ -4,6 +4,15 @@ class BYML
     original_band = gets.strip.downcase
   end
 
+  def self.get_input_band
+    puts "Enter your favorite band or artist to find similar bands/artists you might like:"
+    @@input_band = gets.strip.downcase
+  end
+  
+  def self.convert_input_to_param
+    "#{@@input_band.gsub(" ","+")}/+similar"
+  end
+    
   def self.list_similar_bands
     SimilarBands.all.each.with_index(1) do |band, index|
       puts "#{index}. #{band.name.upcase} - #{band.genres.join(", ")} - Popularity: #{band.popularity}"

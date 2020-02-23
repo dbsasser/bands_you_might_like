@@ -5,20 +5,22 @@ require "open-uri"
 class BandScraper
 
   def self.get_page
-    @@doc = Nokogiri::HTML(open("https://www.last.fm/music/Brand+New/+similar"))
+    @@doc = Nokogiri::HTML(open("https://www.last.fm/#{BYML.convert_input_to_param}"))
   end
   
   def self.make_bands 
-    @@doc.css("div.similar-artists-item").each do |wrapper|
-      band = SimilarBands.new 
-      band.name = wrapper.css("h3.similar-artists-item-name").text.strip
-      band.popularity = wrapper.css("p.similar-artists-item-listeners").text.strip.gsub(" listeners", "").delete(",")
-      band.genres << wrapper.css("li.tag")[0].text.strip.downcase
-      band.genres << wrapper.css("li.tag")[1].text.strip.downcase
-      band.genres << wrapper.css("li.tag")[2].text.strip.downcase
-      band.bio = wrapper.css("div.similar-artists-item-wiki-inner-2.wiki-truncate-3-lines").first.text.strip.gsub("read more", "")
-      band.url = "https://last.fm" + wrapper.css("h3.similar-artists-item-name a").attr("href").text.strip
-    end
+    
+      @@doc.css("div.similar-artists-item").each do |wrapper|
+        band = SimilarBands.new 
+        band.name = wrapper.css("h3.similar-artists-item-name").text.strip
+        band.popularity = wrapper.css("p.similar-artists-item-listeners").text.strip.gsub(" listeners", "").delete(",")
+        band.genres << wrapper.css("li.tag")[0].text.strip.downcase
+        band.genres << wrapper.css("li.tag")[1].text.strip.downcase
+        band.genres << wrapper.css("li.tag")[2].text.strip.downcase
+        band.bio = wrapper.css("div.similar-artists-item-wiki-inner-2.wiki-truncate-3-lines").first.text.strip.gsub("read more", "")
+        band.url = "https://last.fm" + wrapper.css("h3.similar-artists-item-name a").attr("href").text.strip
+      end
+    
     
     self.convert_listeners_to_stars
   end
