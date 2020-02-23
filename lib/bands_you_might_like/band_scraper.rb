@@ -9,8 +9,8 @@ class BandScraper
   end
   
   def self.make_bands 
-    
-      @@doc.css("div.similar-artists-item").each do |wrapper|
+  
+      @@doc.css("div.similar-artists-item").first(6).each do |wrapper|
         band = SimilarBands.new 
         band.name = wrapper.css("h3.similar-artists-item-name").text.strip
         band.popularity = wrapper.css("p.similar-artists-item-listeners").text.strip.gsub(" listeners", "").delete(",")
@@ -23,6 +23,7 @@ class BandScraper
     
     
     self.convert_listeners_to_stars
+    self.scrape_songs
   end
   
   def self.convert_listeners_to_stars
@@ -44,12 +45,13 @@ class BandScraper
   def self.scrape_songs
     SimilarBands.all.each do |band|
       band_page = Nokogiri::HTML(open(band.url))
-      band_page.css("tr.chartlist-row").each do |song|
+      band_page.css("tr.chartlist-row").first(3).each do |song|
         song_key = song.css("td.chartlist-name").text.strip
         song_value = song.css("a.chartlist-play-button").attr("href").text.strip
-        self.top_songs[song_key] = song_value
+        band.top_songs[song_key] = song_value
       end
     end
+  end
 end
 
 
