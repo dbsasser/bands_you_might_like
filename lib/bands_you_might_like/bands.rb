@@ -21,5 +21,14 @@ class SimilarBands
   def self.all
     @@all
   end
-
+  
+  def detailed_view
+    puts @name.upcase
+    puts @genres.join(", ")
+    puts "Popularity: #{@popularity}"
+    
+    puts @bio
+    
+    puts @top_songs
+  end
 end

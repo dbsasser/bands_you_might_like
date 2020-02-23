@@ -24,7 +24,7 @@ class BYML
     @@band_number = gets.strip.to_i
     
     if @@band_number > 0 && @@band_number < 7
-      self.band_details
+      SimilarBands.all[@@band_number - 1].detailed_view
     else
       puts "Try again"
     end
