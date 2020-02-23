@@ -23,6 +23,7 @@ class SimilarBands
   end
   
   def detailed_view
+    
     puts @name.upcase
     puts @genres.join(", ")
     puts "Popularity: #{@popularity}"
