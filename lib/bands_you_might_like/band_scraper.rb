@@ -13,7 +13,9 @@ class BandScraper
       band = SimilarBands.new 
       band.name = wrapper.css("h3.similar-artists-item-name").text.strip
       band.popularity = wrapper.css("p.similar-artists-item-listeners").text.strip.gsub(" listeners", "").delete(",")
-      band.genres << wrapper.css("li.tag").text 
+      band.genres << wrapper.css("li.tag")[0].text.strip.downcase
+      band.genres << wrapper.css("li.tag")[1].text.strip.downcase
+      band.genres << wrapper.css("li.tag")[2].text.strip.downcase
       band.bio = wrapper.css("div.similar-artists-item-wiki-inner-2.wiki-truncate-3-lines").first.text.strip.gsub("read more", "")
       band.url = "https://last.fm" + wrapper.css("h3.similar-artists-item-name a").attr("href").text.strip
     end
