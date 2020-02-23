@@ -40,7 +40,16 @@ class BandScraper
       end
     end
   end
-      
+  
+  def self.scrape_songs
+    SimilarBands.all.each do |band|
+      band_page = Nokogiri::HTML(open(band.url))
+      band_page.css("tr.chartlist-row").each do |song|
+        song_key = song.css("td.chartlist-name").text.strip
+        song_value = song.css("a.chartlist-play-button").attr("href").text.strip
+        self.top_songs[song_key] = song_value
+      end
+    end
 end
 
 

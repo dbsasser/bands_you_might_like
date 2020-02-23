@@ -7,7 +7,7 @@ end
 
 class SimilarBands
 
-  attr_accessor :name, :genres, :url, :bio, :popularity
+  attr_accessor :name, :genres, :url, :bio, :popularity, :top_songs
 
   @@all = []
   
@@ -15,6 +15,7 @@ class SimilarBands
   def initialize
     @@all << self
     @genres = []
+    @top_songs = {}
   end
 
   def self.all

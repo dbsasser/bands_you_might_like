@@ -16,10 +16,8 @@ class BYML
   def self.list_similar_bands
     SimilarBands.all.each.with_index(1) do |band, index|
       puts "#{index}. #{band.name.upcase} - #{band.genres.join(", ")} - Popularity: #{band.popularity}"
-      puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave the program."
     end
-    
-    
+    puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave the program."
   end
 
   def self.band_details
