@@ -17,25 +17,24 @@ class BYML
     SimilarBands.all.each.with_index(1) do |band, index|
       puts "#{index}. #{band.name.upcase} - #{band.genres.join(", ")} - Popularity: #{band.popularity}"
     end
+  end
+  
+  def self.select_similar_band
     puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave the program."
+    @@band_number = gets.strip.to_i
+    
+    if @@band_number > 0 && @@band_number < 7
+      self.band_details
+    else
+      puts "Try again"
+    end
+      
   end
 
+    
+
   def self.band_details
-    puts <<~HEREDOC
-    Made Up Band
-    Indie, Rock, Jazz
-    2001 - 2009
-
-    This will be a short little bio of the band.
-
-    Top Songs
-    1. Their Best Song
-       Listen to it here: http://thisisaurl.com/
-    2. Not quite as Good Song
-       Listen to it here: http://thisisaurl.com
-    3. Their Best Songs
-       Listen to it here: http://thisisaurl.com/
-       HEREDOC
+   puts "The Bands Details"
   end
 
 end
