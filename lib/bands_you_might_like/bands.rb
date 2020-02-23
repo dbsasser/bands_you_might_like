@@ -10,9 +10,11 @@ class SimilarBands
   attr_accessor :name, :genres, :url, :bio, :popularity
 
   @@all = []
+  
 
   def initialize
     @@all << self
+    @genres = []
   end
 
   def self.all

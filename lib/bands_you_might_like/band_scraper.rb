@@ -12,13 +12,30 @@ class BandScraper
     @@doc.css("div.similar-artists-item").each do |wrapper|
       band = SimilarBands.new 
       band.name = wrapper.css("h3.similar-artists-item-name").text.strip
-      band.popularity = wrapper.css("p.similar-artists-item-listeners").text.strip.gsub(" listeners", "")
-      band.genres = wrapper.css("li.tag").text.strip
+      band.popularity = wrapper.css("p.similar-artists-item-listeners").text.strip.gsub(" listeners", "").delete(",")
+      band.genres << wrapper.css("li.tag").text 
       band.bio = wrapper.css("div.similar-artists-item-wiki-inner-2.wiki-truncate-3-lines").first.text.strip.gsub("read more", "")
       band.url = "https://last.fm" + wrapper.css("h3.similar-artists-item-name a").attr("href").text.strip
     end
+    
+    self.convert_listeners_to_stars
   end
-      
+  
+  def self.convert_listeners_to_stars
+    SimilarBands.all.each do |band|
+      if band.popularity.to_i > 1500000
+        band.popularity = "*****"
+      elsif band.popularity.to_i > 1000000
+        band.popularity = "****"
+      elsif band.popularity.to_i > 500000
+        band.popularity = "***"
+      elsif band.popularity.to_i > 200000
+        band.popularity = "**"
+      else
+        band.popularity = "*"
+      end
+    end
+  end
       
 end
 

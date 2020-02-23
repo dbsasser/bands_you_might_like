@@ -2,6 +2,7 @@
 
 require './lib/bands_you_might_like.rb'
 
-BYML.new.call
-BYML.band_list
+BandScraper.get_page
+BandScraper.make_bands
+BYML.list_similar_bands
 BYML.band_details
