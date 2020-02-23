@@ -24,12 +24,21 @@ class SimilarBands
   
   def detailed_view
     
-    puts @name.upcase
-    puts @genres.join(", ")
-    puts "Popularity: #{@popularity}"
+    puts <<~HEREDOC
+    #{@name.upcase}
+    #{@genres.join(", ")}
+    Popularity: #{@popularity}
     
-    puts @bio
+    #{@bio}
     
-    puts @top_songs
+    Top songs:
+    
+    HEREDOC
+    
+    @top_songs.each.with_index(1) do |(name, link), index|
+      puts "#{index}. #{name}"
+      puts "   Listen: #{link}"
+      puts ""
+    end
   end
 end
