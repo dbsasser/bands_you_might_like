@@ -17,8 +17,9 @@ class BYML
   end
     
   def self.list_similar_bands
+    puts "Similar Bands:"
     SimilarBands.all.each.with_index(1) do |band, index|
-      puts "#{index}. #{band.name.upcase} - #{band.genres.join(", ")} - Popularity: #{band.popularity}"
+      puts "#{index}. #{band.name.upcase} - #{band.genres.join(", ")} - Popularity: #{band.popularity}".colorize(:color => :yellow)
     end
   end
   

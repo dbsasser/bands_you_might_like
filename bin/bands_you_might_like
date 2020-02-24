@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require './lib/bands_you_might_like.rb'
+require 'colorize'
 
 BYML.welcome_message
 BYML.get_input_band
