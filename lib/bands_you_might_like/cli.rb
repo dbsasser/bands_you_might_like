@@ -20,14 +20,15 @@ class BYML
   end
   
   def self.select_similar_band
-    puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave the program."
+    puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave."
     @@band_number = gets.strip.to_i
     
     if @@band_number > 0 && @@band_number < 7
       BandScraper.scrape_songs(SimilarBands.all[@@band_number - 1])
       SimilarBands.all[@@band_number - 1].detailed_view
     else
-      puts "Try again"
+      puts "Sorry, I don't understand." 
+      self.select_similar_band
     end
       
   end

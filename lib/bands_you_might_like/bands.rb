@@ -38,7 +38,6 @@ class SimilarBands
     @top_songs.each.with_index(1) do |(name, link), index|
       puts "#{index}. #{name}"
       puts "   Listen: #{link}"
-      puts ""
     end
   end
 end
