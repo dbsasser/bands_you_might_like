@@ -3,9 +3,12 @@ class BYML
     puts "Want to discover some bands you may like? Enter a band you like:"
     original_band = gets.strip.downcase
   end
-
-  def self.get_input_band
+  
+  def self.welcome_message
     puts "Enter your favorite band or artist to find similar bands/artists you might like:"
+  end
+  
+  def self.get_input_band
     @@input_band = gets.strip.downcase
   end
   
