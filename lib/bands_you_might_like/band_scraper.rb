@@ -5,11 +5,16 @@ require "open-uri"
 class BandScraper
 
   def self.get_page
-    @@doc = Nokogiri::HTML(open("https://www.last.fm/music/#{BYML.convert_input_to_param}"))
+    begin  
+      @@doc = Nokogiri::HTML(open("https://www.last.fm/music/#{BYML.convert_input_to_param}"))
+    rescue OpenURI::HTTPError
+      puts "Either that band is so underground that we haven't heard of them yet or something was spelt wrong. Check your spelling or enter a different band:"
+      BYML.get_input_band
+      self.get_page
+    end
   end
   
   def self.make_bands 
-  
       @@doc.css("div.similar-artists-item").first(6).each do |wrapper|
         band = SimilarBands.new 
         band.name = wrapper.css("h3.similar-artists-item-name").text.strip
@@ -20,8 +25,6 @@ class BandScraper
         band.bio = wrapper.css("div.similar-artists-item-wiki-inner-2.wiki-truncate-3-lines").first.text.strip.gsub("read more", "")
         band.url = "https://last.fm" + wrapper.css("h3.similar-artists-item-name a").attr("href").text.strip
       end
-    
-    
     self.convert_listeners_to_stars
   end
   
