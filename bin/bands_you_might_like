@@ -3,11 +3,6 @@
 require './lib/bands_you_might_like.rb'
 require 'colorize'
 
-BYML.welcome_message
-BYML.get_input_band
-BandScraper.get_page
-BandScraper.make_bands
-BYML.list_similar_bands
-BYML.select_similar_band
+BYML.call
 
 

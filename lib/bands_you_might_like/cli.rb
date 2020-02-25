@@ -1,10 +1,20 @@
 class BYML
-  def call
-    puts "Want to discover some bands you may like? Enter a band you like:"
-    original_band = gets.strip.downcase
+  
+  def initialize 
+    
   end
   
-  def self.welcome_message
+  def self.call
+    self.greeting
+    self.get_input_band
+    BandScraper.get_page
+    BandScraper.make_bands
+    self.list_similar_bands
+    self.select_similar_band
+    self.goodbye
+  end
+  
+  def self.greeting
     puts "Enter your favorite band or artist to find similar bands/artists you might like:"
   end
   
@@ -25,22 +35,24 @@ class BYML
   
   def self.select_similar_band
     puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave."
-    @@band_number = gets.strip.to_i
+    @@band_number = gets.strip
     
-    if @@band_number > 0 && @@band_number < 7
-      BandScraper.scrape_songs(SimilarBands.all[@@band_number - 1])
-      SimilarBands.all[@@band_number - 1].detailed_view
+    if @@band_number.to_i > 0 && @@band_number.to_i < 7
+      BandScraper.scrape_songs(SimilarBands.all[@@band_number.to_i - 1])
+      SimilarBands.all[@@band_number.to_i - 1].detailed_view
+    elsif @@band_number.downcase == "back"
+      again = self.new
+      again.call
+    elsif @@band_number.downcase == "exit"
+      self.goodbye
     else
       puts "Sorry, I don't understand." 
       self.select_similar_band
     end
-      
   end
-
-    
-
-  def self.band_details
-   puts "The Bands Details"
+  
+  def self.goodbye
+    puts "See you next time. We hope you discovered some new bands to listen to."
   end
 
 end
