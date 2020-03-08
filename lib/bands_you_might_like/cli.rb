@@ -11,10 +11,20 @@ class BYML
     BandScraper.make_bands
     self.list_similar_bands
     self.select_similar_band
-    self.goodbye
   end
   
   def self.greeting
+    puts <<~HEREDOC.yellow 
+    
+    BBBBB   YY   YY MM    MM LL      
+    BB   B  YY   YY MMM  MMM LL      
+    BBBBBB   YYYYY  MM MM MM LL      
+    BB   BB   YYY   MM    MM LL      
+    BBBBBB    YYY   MM    MM LLLLLLL 
+    
+    
+    HEREDOC
+    
     puts "Enter your favorite band or artist to find similar bands/artists you might like:"
   end
   
@@ -34,7 +44,7 @@ class BYML
   end
   
   def self.select_similar_band
-    puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave."
+    puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave.".cyan
     input = gets.strip.downcase
     
     
@@ -45,7 +55,7 @@ class BYML
       SimilarBands.all.clear
       self.call
     elsif input == "exit"
-  
+      self.goodbye
     else
       puts "Sorry, I don't understand." 
       self.select_similar_band
