@@ -7,7 +7,7 @@ class BandScraper
     begin  
       @@doc = Nokogiri::HTML(open("https://www.last.fm/music/#{BYML.convert_input_to_param}"))
     rescue OpenURI::HTTPError
-      puts "Either that band is so underground that we haven't heard of them yet or something was spelt wrong. Check your spelling or enter a different band:"
+      puts "\nEither that band is so underground that we haven't heard of them yet or something was spelt wrong. Check your spelling or enter a different band.".red
       BYML.get_input_band
       self.get_page
     end

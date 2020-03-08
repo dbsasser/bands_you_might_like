@@ -87,14 +87,14 @@ class BYML
     when "exit"
 
     else
-      puts "Sorry, I don't understand."
+      puts "\nSorry, I don't understand.".red
       self.loop_input
     end
   end
 
 
   def self.goodbye
-    puts "\nSee you next time. We hope you discovered some new bands to listen to.".cyan
+    puts "\nSee you next time! We hope you discovered some new music to listen to!".cyan
   end
 
 end
