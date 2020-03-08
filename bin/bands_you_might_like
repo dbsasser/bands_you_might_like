@@ -3,6 +3,5 @@
 require './lib/bands_you_might_like.rb'
 require 'colorize'
 
+BYML.splash
 BYML.call
-
-
