@@ -34,7 +34,7 @@ class BYML
   end
 
   def self.get_input_band
-    puts "\nEnter one of your favorite bands or artist to find others you might like:".light_blue
+    puts "\nEnter one of your favorite bands or artist to find others you might like:".cyan
     @@input_band = gets.strip.downcase
   end
 
@@ -56,7 +56,7 @@ class BYML
   end
 
   def self.select_similar_band
-    puts "\nEnter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave.".light_blue
+    puts "\nEnter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave.".cyan
     input = gets.strip.downcase
 
 
@@ -94,7 +94,7 @@ class BYML
 
 
   def self.goodbye
-    puts "See you next time. We hope you discovered some new bands to listen to."
+    puts "\nSee you next time. We hope you discovered some new bands to listen to.".cyan
   end
 
 end

@@ -20,10 +20,10 @@ class SimilarBands
     puts "#{@genres.join(", ")}".white
     puts "Popularity: #{@popularity}\n".magenta
     puts "#{@bio}\n".white
-    puts "Top songs:\n".light_blue
+    puts "Top songs:\n".cyan
     @top_songs.each.with_index(1) do |(name, link), index|
       puts "#{index}. #{name}".white
-      puts "   Listen: #{link}".light_blue
+      puts "   Listen: #{link}".cyan
     end
   end
 end
