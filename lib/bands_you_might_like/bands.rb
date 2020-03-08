@@ -1,6 +1,6 @@
 class SimilarBands
 
-  attr_accessor :name, :genres, :url, :bio, :popularity, :top_songs
+  attr_accessor :name, :genres, :url, :bio, :popularity, :top_songs, :all
 
   @@all = []
   

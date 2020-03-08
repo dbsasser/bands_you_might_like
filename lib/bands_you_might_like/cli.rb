@@ -35,16 +35,17 @@ class BYML
   
   def self.select_similar_band
     puts "Enter the number of a band you would like to learn more about and listen to. You can also type 'back' to search for another band or 'exit' to leave."
-    @@band_number = gets.strip
+    input = gets.strip.downcase
     
-    if @@band_number.to_i > 0 && @@band_number.to_i < 7
-      BandScraper.scrape_songs(SimilarBands.all[@@band_number.to_i - 1])
-      SimilarBands.all[@@band_number.to_i - 1].detailed_view
-    elsif @@band_number.downcase == "back"
-      again = self.new
-      again.call
-    elsif @@band_number.downcase == "exit"
-      self.goodbye
+    
+    if input.to_i > 0 && input.to_i < 7
+      BandScraper.scrape_songs(SimilarBands.all[input.to_i - 1])
+      SimilarBands.all[input.to_i - 1].detailed_view
+    elsif input == "back"
+      SimilarBands.all.clear
+      self.call
+    elsif input == "exit"
+  
     else
       puts "Sorry, I don't understand." 
       self.select_similar_band
