@@ -5,3 +5,4 @@ require 'colorize'
 
 BYML.splash
 BYML.call
+BYML.goodbye

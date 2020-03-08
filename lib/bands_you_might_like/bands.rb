@@ -3,7 +3,7 @@ class SimilarBands
   attr_accessor :name, :genres, :url, :bio, :popularity, :top_songs, :all
 
   @@all = []
-  
+
 
   def initialize
     @@all << self
@@ -14,23 +14,16 @@ class SimilarBands
   def self.all
     @@all
   end
-  
+
   def detailed_view
-    
-    puts <<~HEREDOC
-    #{@name.upcase}
-    #{@genres.join(", ")}
-    Popularity: #{@popularity}
-    
-    #{@bio}
-    
-    Top songs:
-    
-    HEREDOC
-    
+    puts "\n#{@name.upcase}".yellow
+    puts "#{@genres.join(", ")}".white
+    puts "Popularity: #{@popularity}\n".magenta
+    puts "#{@bio}\n".white
+    puts "Top songs:\n".light_blue
     @top_songs.each.with_index(1) do |(name, link), index|
-      puts "#{index}. #{name}"
-      puts "   Listen: #{link}"
+      puts "#{index}. #{name}".white
+      puts "   Listen: #{link}".light_blue
     end
   end
 end
