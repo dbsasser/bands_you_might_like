@@ -70,13 +70,13 @@ class BYML
     elsif input == "exit"
 
     else
-      puts "Sorry, I don't understand."
+      puts "Sorry, I don't understand.".red
       self.select_similar_band
     end
   end
 
   def self.loop_input
-    puts "\nWhat would you like to do now? Type 'back' to return to the list, 'search' to begin a new search, or 'exit' to leave the program"
+    puts "\nWhat would you like to do now? Type 'back' to return to the list, 'search' to begin a new search, or 'exit' to leave the program".cyan
     input = gets.strip.downcase
     case input
     when "back"
