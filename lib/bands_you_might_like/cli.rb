@@ -23,11 +23,11 @@ class BYML
   def self.splash
     puts <<~HEREDOC.yellow
 
-    BBBBB   YY   YY MM    MM LL
-    BB   B  YY   YY MMM  MMM LL
-    BBBBBB   YYYYY  MM MM MM LL
-    BB   BB   YYY   MM    MM LL
-    BBBBBB    YYY   MM    MM LLLLLLL
+    BBBBB   YY   YY  MM    MM  LL
+    BB   B  YY   YY  MMM  MMM  LL
+    BBBBBB   YYYYY   MM MM MM  LL
+    BB   BB   YYY    MM    MM  LL
+    BBBBBB    YYY    MM    MM  LLLLLLL
     HEREDOC
 
     puts "Welcome to Bands You Might Like. The goal of this program is to help you disover new music to listen to. By entering a band or artist that your currently like, we will search the web to find similar music. To get started follow the prompts below.".white
