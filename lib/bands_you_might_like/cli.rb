@@ -68,7 +68,7 @@ class BYML
       SimilarBands.all.clear
       self.call
     elsif input == "exit"
-
+      self.goodbye
     else
       puts "Sorry, I don't understand.".red
       self.select_similar_band
@@ -85,7 +85,7 @@ class BYML
       SimilarBands.all.clear
       self.call
     when "exit"
-
+      self.goodbye
     else
       puts "\nSorry, I don't understand.".red
       self.loop_input
@@ -95,6 +95,7 @@ class BYML
 
   def self.goodbye
     puts "\nSee you next time! We hope you discovered some new music to listen to!".cyan
+    exit!
   end
 
 end
