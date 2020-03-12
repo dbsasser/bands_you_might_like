@@ -1,25 +1,5 @@
 class BYML
 
-  def initialize
-
-  end
-
-  def self.call
-    self.search_for_band
-    self.list_view
-  end
-
-  def self.search_for_band
-    self.get_input_band
-    BandScraper.get_page
-    BandScraper.make_bands
-  end
-
-  def self.list_view
-    self.list_similar_bands
-    self.select_similar_band
-  end
-
   def self.splash
     puts <<~HEREDOC.yellow
 
@@ -33,6 +13,13 @@ class BYML
     puts "Welcome to Bands You Might Like. The goal of this program is to help you disover new music to listen to. By entering a band or artist that your currently like, we will search the web to find similar music. To get started follow the prompts below.".white
   end
 
+  def self.call
+    self.get_input_band
+    BandScraper.get_page
+    BandScraper.make_bands
+    self.list_view
+  end
+
   def self.get_input_band
     puts "\nEnter one of your favorite bands or artist to find others you might like:".cyan
     @@input_band = gets.strip.downcase
@@ -40,6 +27,11 @@ class BYML
 
   def self.convert_input_to_param
     "#{@@input_band.gsub(" ","+")}/+similar"
+  end
+
+  def self.list_view
+    self.list_similar_bands
+    self.select_similar_band
   end
 
   def self.list_similar_bands
